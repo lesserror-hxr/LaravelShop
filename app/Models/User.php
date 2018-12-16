@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    use Traits\HashIdHelper;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','introduction','avatar','email_verified'
     ];
 
     /**
@@ -26,4 +27,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $casts = [
+        'email_verified' => 'boolean',
+    ];
+
+    public function getAvatarAttribute()
+    {
+        if($this->attributes['avatar']){
+            return $this->attributes['avatar'];
+        }
+        return \Avatar::create($this->email)->toBase64();
+    }
 }
