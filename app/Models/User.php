@@ -39,4 +39,9 @@ class User extends Authenticatable
         }
         return \Avatar::create($this->email)->toBase64();
     }
+
+    public function addresses()
+    {
+        return $this->hasMany(UserAddress::class);
+    }
 }

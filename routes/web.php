@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/email_verify_notice','PagesController@emailVerifyNotice')->name('email_verify_notice');
     Route::get('/email_verification/verify', 'EmailVerificationController@verify')->name('email_verification.verify');
     Route::middleware('email_verified')->group(function (){
+        Route::get('user_addresses', 'UserAddressesController@index')->name('user_addresses.index');
         Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
     });
 });
