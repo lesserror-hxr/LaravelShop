@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserAddress extends Model
 {
+    use Traits\HashIdHelper;
     protected $fillable = [
         'province',
         'city',
