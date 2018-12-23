@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function (){
         Route::delete('cart/{sku}', 'CartController@remove')->name('cart.remove');
         Route::post('orders', 'OrdersController@store')->name('orders.store');
         Route::get('orders', 'OrdersController@index')->name('orders.index');
+        Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
         Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
     });
 });
