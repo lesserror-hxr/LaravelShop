@@ -104,6 +104,8 @@ return [
     | will not be safe. Please do this before deploying an application!
     |
     */
+    //关闭订单 归还库存时间
+    'order_ttl' => 1800,
 
     'key' => env('APP_KEY'),
 
