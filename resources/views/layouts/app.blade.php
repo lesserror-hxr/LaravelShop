@@ -21,6 +21,7 @@
 </div>
 <!-- JS 脚本 -->
 <script src="{{ mix('js/app.js') }}"></script>
+<script src="{{asset('/js/laroute.js')}}"></script>
 @yield('scriptsAfterJs')
 </body>
 </html>

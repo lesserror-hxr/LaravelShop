@@ -158,7 +158,7 @@
                     .then(function (response) {
                         swal('订单提交成功', '', 'success')
                             .then(() => {
-                                location.href = '/orders/' + response.data.id;
+                                location.href = laroute.route('orders.show', { order : response.data.id });
                             });
                     }, function (error) {
                         if (error.response.status === 422) {
