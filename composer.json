@@ -18,7 +18,8 @@
         "overtrue/laravel-lang": "~3.0",
         "predis/predis": "^1.1",
         "qcod/laravel-imageup": "^1.0",
-        "vinkla/hashids": "~3.3"
+        "vinkla/hashids": "~3.3",
+        "yansongda/pay": "^2.6"
     },
     "require-dev": {
         "beyondcode/laravel-query-detector": "^1.0",
