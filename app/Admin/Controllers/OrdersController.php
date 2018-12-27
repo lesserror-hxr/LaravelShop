@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Exceptions\InvalidRequestException;
+use App\Jobs\AutoReceived;
 use App\Models\Order;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
@@ -197,6 +198,8 @@ class OrdersController extends Controller
             'ship_data'   => $data,
         ]);
 
+
+        $this->dispatch(new AutoReceived($order,config('app.auto_received_ttl')));
         // 返回上一页
         return redirect()->back();
     }
