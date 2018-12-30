@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.22, for Linux (x86_64)
 --
--- Host: localhost    Database: laravel-shop
+-- Host: 127.0.0.1    Database: laravel-shop
 -- ------------------------------------------------------
 -- Server version	5.7.22-0ubuntu18.04.1
 
@@ -21,7 +21,7 @@
 
 LOCK TABLES `admin_menu` WRITE;
 /*!40000 ALTER TABLE `admin_menu` DISABLE KEYS */;
-INSERT INTO `admin_menu` VALUES (1,0,1,'首页','fa-bar-chart','/',NULL,'2018-12-18 01:30:29'),(2,0,6,'系统管理','fa-tasks',NULL,NULL,'2018-12-28 12:03:29'),(3,2,7,'管理员','fa-users','auth/users',NULL,'2018-12-28 12:03:29'),(4,2,8,'角色','fa-user','auth/roles',NULL,'2018-12-28 12:03:29'),(5,2,9,'权限','fa-ban','auth/permissions',NULL,'2018-12-28 12:03:29'),(6,2,10,'菜单','fa-bars','auth/menu',NULL,'2018-12-28 12:03:29'),(7,2,11,'操作日志','fa-history','auth/logs',NULL,'2018-12-28 12:03:29'),(8,0,2,'用户管理','fa-users','/users','2018-12-18 02:20:38','2018-12-18 02:21:10'),(9,0,3,'商品管理','fa-cubes','/products','2018-12-18 07:19:06','2018-12-18 07:19:20'),(10,0,4,'订单管理','fa-rmb','/orders','2018-12-26 13:12:44','2018-12-26 13:14:27'),(11,0,5,'优惠券管理','fa-tags','/coupon_codes','2018-12-28 12:02:56','2018-12-28 12:03:29');
+INSERT INTO `admin_menu` VALUES (1,0,1,'首页','fa-bar-chart','/',NULL,'2018-12-18 01:30:29'),(2,0,7,'系统管理','fa-tasks',NULL,NULL,'2018-12-30 14:00:30'),(3,2,8,'管理员','fa-users','auth/users',NULL,'2018-12-30 14:00:30'),(4,2,9,'角色','fa-user','auth/roles',NULL,'2018-12-30 14:00:30'),(5,2,10,'权限','fa-ban','auth/permissions',NULL,'2018-12-30 14:00:30'),(6,2,11,'菜单','fa-bars','auth/menu',NULL,'2018-12-30 14:00:30'),(7,2,12,'操作日志','fa-history','auth/logs',NULL,'2018-12-30 14:00:30'),(8,0,2,'用户管理','fa-users','/users','2018-12-18 02:20:38','2018-12-18 02:21:10'),(9,0,4,'商品管理','fa-cubes','/products','2018-12-18 07:19:06','2018-12-30 14:00:30'),(10,0,5,'订单管理','fa-rmb','/orders','2018-12-26 13:12:44','2018-12-30 14:00:30'),(11,0,6,'优惠券管理','fa-tags','/coupon_codes','2018-12-28 12:02:56','2018-12-30 14:00:30'),(12,0,3,'类目管理','fa-bars','/categories','2018-12-30 13:59:10','2018-12-30 14:00:30');
 /*!40000 ALTER TABLE `admin_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,4 +103,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-29  8:13:22
+-- Dump completed on 2018-12-30  6:17:15
