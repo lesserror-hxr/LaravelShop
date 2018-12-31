@@ -10,8 +10,10 @@ use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
+
     public function index(Request $request)
     {
+
         // 创建一个查询构造器
         $builder = Product::query()->where('on_sale', true);
         // 判断是否有提交 search 参数，如果有就赋值给 $search 变量
@@ -50,8 +52,6 @@ class ProductsController extends Controller
             // 是否是以 _asc 或者 _desc 结尾
             if (preg_match('/^(.+)_(asc|desc)$/', $order, $m)) {
 
-                dd($m);
-
                 // 如果字符串的开头是这 3 个字符串之一，说明是一个合法的排序值
                 if (in_array($m[1], ['price', 'sold_count', 'rating'])) {
                     // 根据传入的排序值来构造排序参数
@@ -70,6 +70,8 @@ class ProductsController extends Controller
             ],
             // 等价于 isset($category) ? $category : null
             'category' => $category ?? null,
+            // 将类目树传递给模板文件 换为ViewComposer实现
+//            'categoryTree' => $categoryService->getCategoryTree(),
         ]);
     }
 

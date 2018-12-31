@@ -5,6 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import Type from 'typed.js';
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -16,6 +17,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+
 
 
 // 此处需在引入 Vue 之后引入

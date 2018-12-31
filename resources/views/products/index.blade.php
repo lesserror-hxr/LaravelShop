@@ -103,5 +103,16 @@
                 $('.search-form').submit();
             });
         })
+
+        var typed = new Typed('#logo', {
+            // replaceBaseText: true,
+            strings: ["^2000For Laravel Artist",'^2000Developed By 黄向荣'], //输入内容, 支持html标签
+            typeSpeed: 80, //打字速度
+            backSpeed: 80 ,//回退速度
+            showCursor: false,
+            loop: true,   //是否循环
+            smartBackspace: true
+        });
+
     </script>
 @endsection

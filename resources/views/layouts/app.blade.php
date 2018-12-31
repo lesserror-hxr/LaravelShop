@@ -25,6 +25,7 @@
 <!-- JS 脚本 -->
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{asset('/js/laroute.js')}}"></script>
+<script src="https://cdn.bootcss.com/typed.js/2.0.5/typed.js"></script>
 @yield('scriptsAfterJs')
 </body>
 </html>
