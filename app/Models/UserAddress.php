@@ -19,6 +19,9 @@ class UserAddress extends Model
     ];
     protected $dates = ['last_used_at'];
 
+    //序列化模型对象的时候 会将这个访问器属性序列化进去
+    protected $appends = ['full_address'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -28,4 +31,5 @@ class UserAddress extends Model
     {
         return "{$this->province}{$this->city}{$this->district}{$this->address}";
     }
+
 }

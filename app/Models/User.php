@@ -32,6 +32,7 @@ class User extends Authenticatable
         'email_verified' => 'boolean',
     ];
 
+
     public function getAvatarAttribute()
     {
         if($this->attributes['avatar']){
