@@ -235,4 +235,8 @@ return [
 
     ],
 
+
+    /*ngrok内网穿透*/
+    'ngrok_url' => env('NGROK_URL'),
+
 ];
