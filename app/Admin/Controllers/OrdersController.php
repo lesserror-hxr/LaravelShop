@@ -2,7 +2,6 @@
 
 namespace App\Admin\Controllers;
 
-use App\Exceptions\InternalException;
 use App\Exceptions\InvalidRequestException;
 use App\Http\Requests\Admin\HandleRefundRequest;
 use App\Jobs\AutoReceived;

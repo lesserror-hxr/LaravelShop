@@ -16,6 +16,7 @@
         "laravolt/avatar": "^2.1",
         "lord/laroute": "^2.4",
         "mews/captcha": "~2.0",
+        "moontoast/math": "^1.1",
         "overtrue/laravel-lang": "~3.0",
         "predis/predis": "^1.1",
         "qcod/laravel-imageup": "^1.0",
