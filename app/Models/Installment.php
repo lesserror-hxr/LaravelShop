@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Installment extends Model
 {
+    use Traits\HashIdHelper;
+
     const STATUS_PENDING = 'pending';
     const STATUS_REPAYING = 'repaying';
     const STATUS_FINISHED = 'finished';
