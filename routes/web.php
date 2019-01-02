@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function (){
         Route::get('coupon_codes/{code}', 'CouponCodesController@show')->name('coupon_codes.show');
         Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
         Route::post('crowdfunding_orders', 'OrdersController@crowdfunding')->name('crowdfunding_orders.store');
+        Route::post('payment/{order}/installment', 'PaymentController@payByInstallment')->name('payment.installment');
     });
 });
 Route::post('payment/alipay/notify', 'PaymentController@alipayNotify')->name('payment.alipay.notify');
