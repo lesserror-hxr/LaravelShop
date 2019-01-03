@@ -6,6 +6,7 @@ use View;
 use Illuminate\Support\ServiceProvider;
 use Yansongda\Pay\Pay;
 use Monolog\Logger;
+use Elasticsearch\ClientBuilder as ESClientBuilder;
 use App\Http\ViewComposers\CategoryTreeComposer;
 
 class AppServiceProvider extends ServiceProvider
@@ -64,5 +65,20 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.debug')) {
             $this->app->register('VIACreative\SudoSu\ServiceProvider');
         }
+
+
+        // 注册一个名为 es 的单例
+        $this->app->singleton('es', function () {
+            // 从配置文件读取 Elasticsearch 服务器列表
+            $builder = ESClientBuilder::create()->setHosts(config('database.elasticsearch.hosts'));
+            // 如果是开发环境
+            if (app()->environment() === 'local') {
+                // 配置日志，Elasticsearch 的请求和返回数据将打印到日志文件中，方便我们调试
+                $builder->setLogger(app('log')->getMonolog());
+            }
+
+            return $builder->build();
+        });
     }
+
 }
