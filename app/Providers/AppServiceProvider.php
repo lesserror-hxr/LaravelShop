@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use Auth;
 use View;
 use Illuminate\Support\ServiceProvider;
 use Yansongda\Pay\Pay;
 use Monolog\Logger;
+use Studio\Totem\Totem;
 use Elasticsearch\ClientBuilder as ESClientBuilder;
 use App\Http\ViewComposers\CategoryTreeComposer;
 
@@ -65,6 +67,12 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.debug')) {
             $this->app->register('VIACreative\SudoSu\ServiceProvider');
         }
+
+
+        //定时任务web界面用户访问权限判断
+            Totem::auth(function($request) {
+                return Auth::check();
+            });
 
 
         // 注册一个名为 es 的单例
