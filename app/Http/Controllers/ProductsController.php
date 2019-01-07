@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\InvalidRequestException;
+use App\Models\Product;
 use App\Models\Category;
 use App\Models\OrderItem;
-use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Exceptions\InvalidRequestException;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class ProductsController extends Controller
@@ -90,7 +90,7 @@ class ProductsController extends Controller
         $perPage = 16;
 
 
-        // 构建查询
+        // 构建es查询语句
         $params = [
             'index' => 'products',
             'type'  => '_doc',
@@ -107,7 +107,7 @@ class ProductsController extends Controller
             ],
         ];
 
-        // 是否有提交 order 参数，如果有就赋值给 $order 变量
+        // es的排序查询  是否有提交 order 参数，如果有就赋值给 $order 变量
         // order 参数用来控制商品的排序规则
         if ($order = $request->input('order', '')) {
             // 是否是以 _asc 或者 _desc 结尾
@@ -122,7 +122,7 @@ class ProductsController extends Controller
 
 
         //es使用分类查询
-        if ($request->input('category_id') && $category = Category::find($request->input('category_id'))) {
+        if ($request->input('category_id') && $category = Category::query()->find($request->input('category_id'))) {
             if ($category->is_directory) {
                 // 如果是一个父类目，则使用 category_path 来筛选
                 $params['body']['query']['bool']['filter'][] = [
@@ -206,8 +206,8 @@ class ProductsController extends Controller
                         // 指明 nested 字段
                         'path'  => 'properties',
                         'query' => [
-                            ['term' => ['properties.name' => $name]],
-                            ['term' => ['properties.value' => $value]],
+                            // 将原来的两个 term 查询改成一个
+                            ['term' => ['properties.search_value' => $filter]],
                         ],
                     ],
                 ];
