@@ -59,6 +59,12 @@ class Product extends Model
         return $this->hasOne(CrowdfundingProduct::class);
     }
 
+   //  我们发现还有一段代码重复出现了两次，就是根据商品 ID 从数据库里查询对应的商品，并要求保持 ID 的次序。所以我们也封装一下这个代码，把它定义为 Product 模型的一个 Scope
+    public function scopeByIds($query, $ids)
+    {
+        return $query->whereIn('id', $ids)->orderByRaw(sprintf("FIND_IN_SET(id, '%s')", join(',', $ids)));
+    }
+
     public function getGroupedPropertiesAttribute()
     {
         return $this->properties
