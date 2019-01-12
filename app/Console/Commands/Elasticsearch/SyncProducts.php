@@ -12,7 +12,8 @@ class SyncProducts extends Command
      *
      * @var string
      */
-    protected $signature = 'es:sync-products';
+    // 添加一个名为 index，默认值为 products 的参数
+    protected $signature = 'es:sync-products {--index=products}';
 
     /**
      * The console command description.
@@ -57,7 +58,8 @@ class SyncProducts extends Command
 
                     $req['body'][] = [
                         'index' => [
-                            '_index' => 'products',
+                            // 从参数中读取索引名称
+                            '_index' => $this->option('index'),
                             '_type'  => '_doc',
                             '_id'    => $data['id'],
                         ],
