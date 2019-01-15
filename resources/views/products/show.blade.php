@@ -204,9 +204,6 @@
                                 .then(function() {
                                     location.href = '{{ route('login') }}';
                                 });
-                        }else if (error.response.status === 400) {
-                            // http状态码为 400 代表用户未验证邮箱
-                            swal(error.response.data.msg, '', 'error');
                         }else if (error.response && error.response.data.msg) {
                             // 其他有 msg 字段的情况，将 msg 提示给用户
                             swal(error.response.data.msg, '', 'error');
@@ -246,7 +243,10 @@
                             // http 状态码为 401 代表用户未登陆
                             swal('请先登录', '', 'error');
 
-                        } else if (error.response.status === 422) {
+                        }else if (error.response.status === 400) {
+                            // http状态码为 400 代表用户未验证邮箱
+                            swal(error.response.data.msg, '', 'error');
+                        }else if (error.response.status === 422) {
 
                             // http 状态码为 422 代表用户输入校验失败
                             var html = '<div>';
