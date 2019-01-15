@@ -241,7 +241,11 @@
                         if (error.response.status === 401) {
 
                             // http 状态码为 401 代表用户未登陆
-                            swal('请先登录', '', 'error');
+                            swal('请先登录', '', 'error')
+                            //条转到登录页面
+                        .then(function() {
+                                location.href = '{{ route('login') }}';
+                            });
 
                         }else if (error.response.status === 400) {
                             // http状态码为 400 代表用户未验证邮箱
