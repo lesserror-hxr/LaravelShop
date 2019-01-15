@@ -204,7 +204,10 @@
                                 .then(function() {
                                     location.href = '{{ route('login') }}';
                                 });
-                        } else if (error.response && error.response.data.msg) {
+                        }else if (error.response.status === 400) {
+                            // http状态码为 400 代表用户未验证邮箱
+                            swal(error.response.data.msg, '', 'error');
+                        }else if (error.response && error.response.data.msg) {
                             // 其他有 msg 字段的情况，将 msg 提示给用户
                             swal(error.response.data.msg, '', 'error');
                         }  else {
