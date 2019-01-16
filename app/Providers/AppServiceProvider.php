@@ -64,15 +64,15 @@ class AppServiceProvider extends ServiceProvider
 
 
         //注册sudoSU插件
-//        if (config('app.debug')) {
-//            $this->app->register('VIACreative\SudoSu\ServiceProvider');
-//        }
+        if (config('app.debug')) {
+            $this->app->register('VIACreative\SudoSu\ServiceProvider');
+        }
 
 
         //定时任务web界面用户访问权限判断
-//            Totem::auth(function($request) {
-//                return Auth::check();
-//            });
+            Totem::auth(function($request) {
+                return Auth::check();
+            });
 
 
         // 注册一个名为 es 的单例
