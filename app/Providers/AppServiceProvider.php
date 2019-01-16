@@ -64,9 +64,9 @@ class AppServiceProvider extends ServiceProvider
 
 
         //注册sudoSU插件
-        if (config('app.debug')) {
-            $this->app->register('VIACreative\SudoSu\ServiceProvider');
-        }
+//        if (config('app.debug')) {
+//            $this->app->register('VIACreative\SudoSu\ServiceProvider');
+//        }
 
 
         //定时任务web界面用户访问权限判断
