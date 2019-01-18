@@ -35,13 +35,13 @@
 
                             <!-- 商品属性面包屑开始 -->
                             <!-- 遍历当前属性筛选条件 -->
-                            @foreach($propertyFilters as $name => $value)
-                                <span class="filter">{{ $name }}:
-            <span class="filter-value">{{ $value }}</span>
-                                    <!-- 调用之后定义的 removeFilterFromQuery -->
-            <a class="remove-filter" href="javascript: removeFilterFromQuery('{{ $name }}')">×</a>
-          </span>
-                        @endforeach
+                            {{--@foreach($propertyFilters as $name => $value)--}}
+                                {{--<span class="filter">{{ $name }}:--}}
+            {{--<span class="filter-value">{{ $value }}</span>--}}
+                                    {{--<!-- 调用之后定义的 removeFilterFromQuery -->--}}
+            {{--<a class="remove-filter" href="javascript: removeFilterFromQuery('{{ $name }}')">×</a>--}}
+          {{--</span>--}}
+                        {{--@endforeach--}}
                         <!-- 商品属性面包屑结束 -- -->
 
                             <input type="text" class="form-control input-sm" name="search" placeholder="搜索">
@@ -76,19 +76,19 @@
 
                     <!-- 分面搜索结果开始 -->
                         <!-- 遍历聚合的商品属性 -->
-                        @foreach($properties as $property)
-                            <div class="row">
-                                <!-- 输出属性名 -->
-                                <div class="col-xs-3 filter-key">{{ $property['key'] }}：</div>
-                                <div class="col-xs-9 filter-values">
-                                    <!-- 遍历属性值列表 -->
-                                    @foreach($property['values'] as $value)
-                                        <!-- 调用下面定义的 appendFilterToQuery 函数 -->
-                                            <a href="javascript: appendFilterToQuery('{{ $property['key'] }}', '{{ $value }}')">{{ $value }}</a>
-                                    @endforeach
-                                </div>
-                            </div>
-                    @endforeach
+                        {{--@foreach($properties as $property)--}}
+                            {{--<div class="row">--}}
+                                {{--<!-- 输出属性名 -->--}}
+                                {{--<div class="col-xs-3 filter-key">{{ $property['key'] }}：</div>--}}
+                                {{--<div class="col-xs-9 filter-values">--}}
+                                    {{--<!-- 遍历属性值列表 -->--}}
+                                    {{--@foreach($property['values'] as $value)--}}
+                                        {{--<!-- 调用下面定义的 appendFilterToQuery 函数 -->--}}
+                                            {{--<a href="javascript: appendFilterToQuery('{{ $property['key'] }}', '{{ $value }}')">{{ $value }}</a>--}}
+                                    {{--@endforeach--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                    {{--@endforeach--}}
                     <!-- 分面搜索结果结束 -->
 
                     </div>
