@@ -40,5 +40,12 @@ Route::group([
     $router->get('crowdfunding_products/{id}/edit', 'CrowdfundingProductsController@edit');
     $router->put('crowdfunding_products/{id}', 'CrowdfundingProductsController@update');
 
+    //秒杀商品
+    $router->get('seckill_products', 'SeckillProductsController@index');
+    $router->get('seckill_products/create', 'SeckillProductsController@create');
+    $router->post('seckill_products', 'SeckillProductsController@store');
+    $router->get('seckill_products/{id}/edit', 'SeckillProductsController@edit');
+    $router->put('seckill_products/{id}', 'SeckillProductsController@update');
+
 
 });
