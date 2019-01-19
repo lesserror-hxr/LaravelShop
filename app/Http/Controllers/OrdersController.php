@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\OrderReviewed;
-use App\Exceptions\CouponCodeUnavailableException;
-use App\Http\Requests\CrowdFundingOrderRequest;
-use App\Models\CouponCode;
-use App\Models\ProductSku;
 use Carbon\Carbon;
 use App\Models\Order;
+use App\Models\CouponCode;
+use App\Models\ProductSku;
 use App\Models\UserAddress;
 use Illuminate\Http\Request;
+use App\Events\OrderReviewed;
 use App\Services\OrderService;
 use App\Http\Requests\OrderRequest;
 use App\Http\Requests\SendReviewRequest;
 use App\Http\Requests\ApplyRefundRequest;
+use App\Http\Requests\SeckillOrderRequest;
 use App\Exceptions\InvalidRequestException;
+use App\Http\Requests\CrowdFundingOrderRequest;
+use App\Exceptions\CouponCodeUnavailableException;
 
 class OrdersController extends Controller
 {
@@ -47,6 +48,17 @@ class OrdersController extends Controller
         $amount  = $request->input('amount');
 
         return $orderService->crowdfunding($user, $address, $sku, $amount);
+    }
+
+
+    //秒杀商品的下单接口逻辑
+    public function seckill(SeckillOrderRequest $request, OrderService $orderService)
+    {
+        $user    = $request->user();
+        $address = UserAddress::find($request->input('address_id'));
+        $sku     = ProductSku::find($request->input('sku_id'));
+
+        return $orderService->seckill($user, $address, $sku);
     }
 
     public function index(Request $request)

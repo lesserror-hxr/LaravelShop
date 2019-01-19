@@ -107,6 +107,9 @@ return [
     //关闭订单 归还库存时间
     'order_ttl' => 1800,
 
+    //秒杀商品关闭订单  通常时间比普通商品时间短
+    'seckill_order_ttl' => 600,
+
     // 30天自动确认收货
     'auto_received_ttl' => 120,
 

@@ -21,6 +21,7 @@ class Order extends Model
 
     const TYPE_NORMAL = 'normal';
     const TYPE_CROWDFUNDING = 'crowdfunding';
+    const TYPE_SECKILL = 'seckill';
 
     public static $refundStatusMap = [
         self::REFUND_STATUS_PENDING    => '未退款',
@@ -39,6 +40,7 @@ class Order extends Model
     public static $typeMap = [
         self::TYPE_NORMAL => '普通商品订单',
         self::TYPE_CROWDFUNDING => '众筹商品订单',
+        self::TYPE_SECKILL => '秒杀商品订单',
     ];
 
     protected $fillable = [

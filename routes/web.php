@@ -48,6 +48,9 @@ Route::middleware('auth')->group(function (){
         Route::get('installments/{installment}/alipay', 'InstallmentsController@payByAlipay')->name('installments.alipay');
         Route::get('installments/alipay/return', 'InstallmentsController@alipayReturn')->name('installments.alipay.return');
         Route::get('installments/{installment}/wechat', 'InstallmentsController@payByWechat')->name('installments.wechat');
+
+        //商品秒杀接口
+        Route::post('seckill_orders', 'OrdersController@seckill')->name('seckill_orders.store');
     });
 });
 Route::post('payment/alipay/notify', 'PaymentController@alipayNotify')->name('payment.alipay.notify');
