@@ -11,6 +11,8 @@
 |
 */
 
+//商品秒杀接口  秒杀接口放在路由的最开头，是因为 Laravel 匹配路由是从上往下匹配的，遇到第一个满足条件的路由就返回，所以放在最开头可以节省掉很多匹配路由的资源消耗。
+Route::post('seckill_orders', 'OrdersController@seckill')->name('seckill_orders.store');
 
 Route::middleware('auth')->group(function (){
     Route::get('/email_verification/send', 'EmailVerificationController@send')->name('email_verification.send');
@@ -49,8 +51,6 @@ Route::middleware('auth')->group(function (){
         Route::get('installments/alipay/return', 'InstallmentsController@alipayReturn')->name('installments.alipay.return');
         Route::get('installments/{installment}/wechat', 'InstallmentsController@payByWechat')->name('installments.wechat');
 
-        //商品秒杀接口
-        Route::post('seckill_orders', 'OrdersController@seckill')->name('seckill_orders.store');
     });
 });
 Route::post('payment/alipay/notify', 'PaymentController@alipayNotify')->name('payment.alipay.notify');
