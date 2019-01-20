@@ -18,8 +18,8 @@ class ProductsController extends Controller
     public function index(Request $request,CategoryService $categoryService)
     {
 
-        $stock = \Redis::get('seckill_sku_112');
-        dd($stock);
+//        $stock = \Redis::get('seckill_sku_112');
+//        dd($stock);
         /**
          * 没有使用es之前的普通的查询
          *
