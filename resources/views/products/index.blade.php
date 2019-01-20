@@ -116,7 +116,7 @@
                                         @elseif($product->type == \App\Models\Product::TYPE_CROWDFUNDING)
                                             <div  style="display: inline-block;margin-top:10px;margin-right: 20px;float:right;border-radius:10%;border: 1px solid #2ab27b;color:#2ab27b;padding:0 8px;">拼团</div>
                                         @elseif($product->price > 300 )
-                                            <div  style="display: inline-block;margin-top:10px;margin-right: 20px;float:right;border-radius:10%;border: 1px solid #2ab27b;color:#2ab27b;padding:0 8px;">支持分期购</div>
+                                            <div  style="display: inline-block;margin-top:10px;margin-right: 0px;float:right;border-radius:10%;border: 1px solid #797596;color:#797596;padding:0 8px;">支持分期购</div>
                                         @endif
                                         <div class="title">
                                             <a href="{{ route('products.show', ['product' => $product]) }}">{{ $product->title }}</a>
