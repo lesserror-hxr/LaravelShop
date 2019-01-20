@@ -57,6 +57,9 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        //用户邮箱验证中间件
         'email_verified' => \App\Http\Middleware\CheckIfEmailVerified::class,
+        //秒杀随机拒绝中间件
+        'random_drop' => \App\Http\Middleware\RandomDropSeckillRequest::class,
     ];
 }
