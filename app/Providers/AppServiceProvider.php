@@ -4,10 +4,11 @@ namespace App\Providers;
 
 use Auth;
 use View;
-use Illuminate\Support\ServiceProvider;
-use Yansongda\Pay\Pay;
 use Monolog\Logger;
+use Yansongda\Pay\Pay;
 use Studio\Totem\Totem;
+use Illuminate\Support\Str;
+use Illuminate\Support\ServiceProvider;
 use Elasticsearch\ClientBuilder as ESClientBuilder;
 use App\Http\ViewComposers\CategoryTreeComposer;
 
@@ -25,6 +26,13 @@ class AppServiceProvider extends ServiceProvider
         // 当 Laravel 渲染 products.index 和 products.show 模板时，就会使用 CategoryTreeComposer 这个来注入类目树变量
         // 同时 Laravel 还支持通配符，例如 products.* 即代表当渲染 products 目录下的模板时都执行这个 ViewComposer
         View::composer(['products.index', 'products.show'],CategoryTreeComposer::class);
+
+        // 只在本地开发环境启用 SQL 日志
+        if (app()->environment('local')) {
+            \DB::listen(function ($query) {
+                \Log::info(Str::replaceArray('?', $query->bindings, $query->sql));
+            });
+        }
     }
 
     /**
