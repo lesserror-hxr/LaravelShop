@@ -125,6 +125,9 @@ body {
           }
         }
       }
+      .product-content:hover{
+        box-shadow:0 0 5px rgba(167, 167, 167, .5);
+      }
     }
   }
 }
