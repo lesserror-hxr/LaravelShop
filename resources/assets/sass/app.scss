@@ -126,7 +126,7 @@ body {
         }
       }
       .product-content:hover{
-        box-shadow:0 0 5px rgba(167, 167, 167, .5);
+        box-shadow:0 0 5px rgba(234, 99, 140, .5);
       }
     }
   }
@@ -164,8 +164,10 @@ body {
     font-size: 12px;
     margin-bottom: 10px;
     &>.row {
+      display: -webkit-box;
       border-bottom: 1px solid #eee;
       .filter-key {
+        vertical-align: center;
         width: 150px;
         padding-top: 5px;
         padding-bottom: 5px;
@@ -196,7 +198,7 @@ body {
       color: white;
       font-weight: bold;
       background: red;
-      padding: 2px;
+      padding: 2px 5px;
     }
   }
 
