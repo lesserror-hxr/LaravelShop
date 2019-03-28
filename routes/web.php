@@ -14,6 +14,9 @@
 //商品秒杀接口  秒杀接口放在路由的最开头，是因为 Laravel 匹配路由是从上往下匹配的，遇到第一个满足条件的路由就返回，所以放在最开头可以节省掉很多匹配路由的资源消耗。
 Route::post('seckill_orders', 'OrdersController@seckill')->name('seckill_orders.store')->middleware('random_drop:80');
 
+//网站首页
+Route::redirect('/', '/products')->name('root');
+
 Route::middleware('auth')->group(function (){
     Route::get('/email_verification/send', 'EmailVerificationController@send')->name('email_verification.send');
     Route::get('/email_verify_notice','PagesController@emailVerifyNotice')->name('email_verify_notice');
@@ -64,7 +67,6 @@ Route::post('installments/wechat/notify', 'InstallmentsController@wechatNotify')
 //微信分期退款回调
 Route::post('installments/wechat/refund_notify', 'InstallmentsController@wechatRefundNotify')->name('installments.wechat.refund_notify');
 
-Route::redirect('/', '/products')->name('root');
 Route::get('products', 'ProductsController@index')->name('products.index');
 Route::get('products/{product}', 'ProductsController@show')->name('products.show');
 
