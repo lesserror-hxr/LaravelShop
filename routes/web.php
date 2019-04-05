@@ -17,6 +17,22 @@ Route::post('seckill_orders', 'OrdersController@seckill')->name('seckill_orders.
 //网站首页
 Route::redirect('/', '/products')->name('root');
 
+//用户登录注册
+Auth::routes();
+
+//登录
+$this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
+$this->post('login', 'Auth\LoginController@login');
+$this->post('logout', 'Auth\LoginController@logout')->name('logout');
+
+//重写注册为手机短信
+Route::get('register', 'Auth\RegisterController@showPart1')->name('register');
+Route::post('checkCaptcha', 'Auth\RegisterController@sendSms')->name('register.checkCaptcha');
+Route::get('register2', 'Auth\RegisterController@showPart2')->name('register2');
+Route::post('register3', 'Auth\RegisterController@showPart3')->name('register3');
+
+
+
 Route::middleware('auth')->group(function (){
     Route::get('/email_verification/send', 'EmailVerificationController@send')->name('email_verification.send');
     Route::get('/email_verify_notice','PagesController@emailVerifyNotice')->name('email_verify_notice');
@@ -70,5 +86,4 @@ Route::post('installments/wechat/refund_notify', 'InstallmentsController@wechatR
 Route::get('products', 'ProductsController@index')->name('products.index');
 Route::get('products/{product}', 'ProductsController@show')->name('products.show');
 
-Auth::routes();
 
