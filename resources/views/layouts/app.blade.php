@@ -9,6 +9,7 @@
     <title>@yield('title', 'My-Shop') - For Laravel Artist</title>
     <!-- 样式 -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    @stack('MyFontStyle')
 </head>
 <body>
 @if (config('app.debug'))
@@ -26,6 +27,7 @@
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{asset('/js/laroute.js')}}"></script>
 <script src="https://cdn.bootcss.com/typed.js/2.0.5/typed.js"></script>
+@stack('MyFontScripts')
 @yield('scriptsAfterJs')
 </body>
 </html>
