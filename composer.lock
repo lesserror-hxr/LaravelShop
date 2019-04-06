@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e92d2f94a9bda6200b173deeccdca94c",
+    "content-hash": "5e9da4734355605dd594ee771d3a0c1e",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2823,16 +2823,16 @@
         },
         {
             "name": "overtrue/easy-sms",
-            "version": "1.1.8",
+            "version": "1.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/easy-sms.git",
-                "reference": "078abd528fa0c7ca365ad7783a0fdf53143e11a5"
+                "reference": "b1d181551944710f63cd3049796225c71badca86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/easy-sms/zipball/078abd528fa0c7ca365ad7783a0fdf53143e11a5",
-                "reference": "078abd528fa0c7ca365ad7783a0fdf53143e11a5",
+                "url": "https://api.github.com/repos/overtrue/easy-sms/zipball/b1d181551944710f63cd3049796225c71badca86",
+                "reference": "b1d181551944710f63cd3049796225c71badca86",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2847,7 +2847,7 @@
             },
             "require-dev": {
                 "mockery/mockery": "1.0.x-dev",
-                "phpunit/phpunit": "^5.6"
+                "phpunit/phpunit": "^5.7 || ^7.5"
             },
             "type": "library",
             "autoload": {
@@ -2866,7 +2866,7 @@
                 }
             ],
             "description": "The easiest way to send short message.",
-            "time": "2019-01-11T02:05:23+00:00"
+            "time": "2019-03-25T07:42:05+00:00"
         },
         {
             "name": "overtrue/laravel-lang",
@@ -6574,6 +6574,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-08-09T05:50:03+00:00"
         },
         {
