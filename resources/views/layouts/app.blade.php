@@ -12,9 +12,9 @@
     @stack('MyFontStyle')
 </head>
 <body>
-@if (config('app.debug'))
-    @include('sudosu::user-selector')
-@endif
+{{--@if (config('app.debug'))--}}
+    {{--@include('sudosu::user-selector')--}}
+{{--@endif--}}
 <div id="app" class="{{ route_class() }}-page">
     @include('layouts._header')
     <div class="container">
