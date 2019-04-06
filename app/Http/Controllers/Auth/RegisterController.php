@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Services\SmsService;
+use Illuminate\Http\Request;
 use App\Services\CaptchaService;
 use App\Exceptions\SystemException;
 use Illuminate\Support\Facades\Log;
@@ -11,7 +12,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use App\Exceptions\RegisterException;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Exceptions\InvalidRequestException;
 use Illuminate\Foundation\Auth\RegistersUsers;
