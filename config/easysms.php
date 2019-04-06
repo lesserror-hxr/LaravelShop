@@ -2,7 +2,7 @@
 return [
     'sms_config' => [
         'expire' => '15', //验证码有效时间（分钟）
-        'template_id' => '192732', //模板ID157503
+        'template_id' => '270979', //模板ID157503
     ],
     'send_config' => [
         // HTTP 请求的超时时间（秒）
