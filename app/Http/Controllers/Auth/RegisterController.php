@@ -145,6 +145,9 @@ class RegisterController extends Controller
         ]);
         $user_data = $request->all();
         $user_data['phone'] = $cacheData['phone'];
+
+        dd($user_data);
+
         //执行注册
         event(new Registered($user = $this->create($user_data)));
         $this->guard()->login($user);
