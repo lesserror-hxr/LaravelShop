@@ -32,6 +32,19 @@ Route::get('register2', 'Auth\RegisterController@showPart2')->name('register2');
 Route::post('register3', 'Auth\RegisterController@showPart3')->name('register3');
 
 
+//重写忘记密码为手机短信验证,并且保留原来的邮箱找回逻辑和路由
+Route::prefix('sms')->group(function () {
+    $this->get('password/sms', 'Auth\ForgotPasswordController@showSendSmsForm')
+        ->name('sms.password.sms'); //显示填写手机号表单
+    $this->post('password/check', 'Auth\ForgotPasswordController@sendResetSms')
+        ->name('sms.password.check'); //对比验证码，发送手机短信
+    $this->get('password/reset', 'Auth\ForgotPasswordController@showResetForm')
+        ->name('sms.password.resetform'); //显示重置新密码表单
+    $this->post('password/reset', 'Auth\ForgotPasswordController@smsResetPassword')
+        ->name('sms.password.reset'); //更新用户新密码
+});
+
+
 
 Route::middleware('auth')->group(function (){
     Route::get('/email_verification/send', 'EmailVerificationController@send')->name('email_verification.send');
