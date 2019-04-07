@@ -46,57 +46,102 @@ Route::prefix('sms')->group(function () {
 
 
 
-Route::middleware('auth')->group(function (){
+Route::middleware('my_auth')->group(function (){
+    //手动发送验证邮件页面
     Route::get('/email_verification/send', 'EmailVerificationController@send')->name('email_verification.send');
+    //未验证邮箱的重定向页面
     Route::get('/email_verify_notice','PagesController@emailVerifyNotice')->name('email_verify_notice');
+    //验证邮箱页面
     Route::get('/email_verification/verify', 'EmailVerificationController@verify')->name('email_verification.verify');
-    Route::middleware('email_verified')->group(function (){
+
+        //收货地址 相关
         Route::get('user_addresses', 'UserAddressesController@index')->name('user_addresses.index');
         Route::get('user_addresses/create', 'UserAddressesController@create')->name('user_addresses.create');
         Route::post('user_addresses', 'UserAddressesController@store')->name('user_addresses.store');
         Route::get('user_addresses/{user_address}', 'UserAddressesController@edit')->name('user_addresses.edit');
         Route::put('user_addresses/{user_address}', 'UserAddressesController@update')->name('user_addresses.update');
         Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy')->name('user_addresses.destroy');
+
+        //收藏商品和取消收藏
         Route::post('products/{product}/favorite', 'ProductsController@favor')->name('products.favor');
         Route::delete('products/{product}/favorite', 'ProductsController@disfavor')->name('products.disfavor');
+
+        //收藏商品列表
         Route::get('products/favorites', 'ProductsController@favorites')->name('products.favorites');
+
+        //将商品添加到购物车
         Route::post('cart', 'CartController@add')->name('cart.add');
+        //购物车列表
         Route::get('cart', 'CartController@index')->name('cart.index');
+        //从购物车中移除
         Route::delete('cart/{sku}', 'CartController@remove')->name('cart.remove');
+
+        //购物车下单
         Route::post('orders', 'OrdersController@store')->name('orders.store');
+        //订单列表页面
         Route::get('orders', 'OrdersController@index')->name('orders.index');
+        //订单详情页面
         Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
+
+        //支付宝扫码支付
         Route::get('payment/{order}/alipay', 'PaymentController@payByAlipay')->name('payment.alipay');
         Route::get('payment/alipay/return', 'PaymentController@alipayReturn')->name('payment.alipay.return');
-        Route::get('payment/{order}/wechat', 'PaymentController@payByWechat')->name('payment.wechat');
-        Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received');
-        Route::get('orders/{order}/review', 'OrdersController@review')->name('orders.review.show');
-        Route::post('orders/{order}/review', 'OrdersController@sendReview')->name('orders.review.store');
-        Route::post('orders/{order}/apply_refund', 'OrdersController@applyRefund')->name('orders.apply_refund');
-        Route::get('coupon_codes/{code}', 'CouponCodesController@show')->name('coupon_codes.show');
-        Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
-        Route::post('crowdfunding_orders', 'OrdersController@crowdfunding')->name('crowdfunding_orders.store');
-        Route::post('payment/{order}/installment', 'PaymentController@payByInstallment')->name('payment.installment');
-        Route::get('installments', 'InstallmentsController@index')->name('installments.index');
-        Route::get('installments/{installment}', 'InstallmentsController@show')->name('installments.show');
-        Route::get('installments/{installment}/alipay', 'InstallmentsController@payByAlipay')->name('installments.alipay');
-        Route::get('installments/alipay/return', 'InstallmentsController@alipayReturn')->name('installments.alipay.return');
-        Route::get('installments/{installment}/wechat', 'InstallmentsController@payByWechat')->name('installments.wechat');
 
+        //微信扫码支付
+        Route::get('payment/{order}/wechat', 'PaymentController@payByWechat')->name('payment.wechat');
+
+        //用户确认收货
+        Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received');
+        //发布评价标表单
+        Route::get('orders/{order}/review', 'OrdersController@review')->name('orders.review.show');
+        //存储评价
+        Route::post('orders/{order}/review', 'OrdersController@sendReview')->name('orders.review.store');
+
+        //申请退款
+        Route::post('orders/{order}/apply_refund', 'OrdersController@applyRefund')->name('orders.apply_refund');
+
+        //优惠券查询
+        Route::get('coupon_codes/{code}', 'CouponCodesController@show')->name('coupon_codes.show');
+
+        //编辑用户个人信息
+        Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
+
+        //众筹商品下单
+        Route::post('crowdfunding_orders', 'OrdersController@crowdfunding')->name('crowdfunding_orders.store');
+
+        //创建分期付款
+        Route::post('payment/{order}/installment', 'PaymentController@payByInstallment')->name('payment.installment');
+        //分期付款列表
+        Route::get('installments', 'InstallmentsController@index')->name('installments.index');
+        //分期付款详情页
+        Route::get('installments/{installment}', 'InstallmentsController@show')->name('installments.show');
+        //分期付款支付宝拉起支付
+        Route::get('installments/{installment}/alipay', 'InstallmentsController@payByAlipay')->name('installments.alipay');
+        //分期付款支付宝前端回调
+        Route::get('installments/alipay/return', 'InstallmentsController@alipayReturn')->name('installments.alipay.return');
+        //分期付款拉起微信扫码支付
+        Route::get('installments/{installment}/wechat', 'InstallmentsController@payByWechat')->name('installments.wechat');
     });
-});
+
+//商品列表
+Route::get('products', 'ProductsController@index')->name('products.index');
+//商品详情 这个要放后面不然会和收藏商品列表冲突
+Route::get('products/{product}', 'ProductsController@show')->name('products.show');
+
+//支付宝扫码支付后端回调
 Route::post('payment/alipay/notify', 'PaymentController@alipayNotify')->name('payment.alipay.notify');
+//微信扫码支付回调
 Route::post('payment/wechat/notify', 'PaymentController@wechatNotify')->name('payment.wechat.notify');
+//微信退款通知回调
 Route::post('payment/wechat/refund_notify', 'PaymentController@wechatRefundNotify')->name('payment.wechat.refund_notify');
 
-//分期付款 后端回调不能放在 auth 中间件中
+// 分期付款支付宝后端回调
 Route::post('installments/alipay/notify', 'InstallmentsController@alipayNotify')->name('installments.alipay.notify');
+// 分期付款微信扫码支付后端回调
 Route::post('installments/wechat/notify', 'InstallmentsController@wechatNotify')->name('installments.wechat.notify');
 
-//微信分期退款回调
+//微信分期退款回调 （支付宝的不用回调，同步获取信息）
 Route::post('installments/wechat/refund_notify', 'InstallmentsController@wechatRefundNotify')->name('installments.wechat.refund_notify');
 
-Route::get('products', 'ProductsController@index')->name('products.index');
-Route::get('products/{product}', 'ProductsController@show')->name('products.show');
 
 

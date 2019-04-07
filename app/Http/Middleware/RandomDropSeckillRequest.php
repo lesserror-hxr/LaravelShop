@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use App\Exceptions\InvalidRequestException;
 use Closure;
+use App\Exceptions\InvalidRequestException;
 
 class RandomDropSeckillRequest
 {
