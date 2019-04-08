@@ -5,11 +5,12 @@
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    收货地址列表
-                    <a href="{{ route('user_addresses.create') }}" class="pull-right">新增收货地址</a>
-                </div>
+                <div class="panel-heading">收货地址列表</div>
                 <div class="panel-body">
+                <a class="btn btn-success" style="margin-bottom: 20px;" href="{{ route('user_addresses.create')}}">
+                    添加收货地址
+                </a>
+
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -21,7 +22,15 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($addresses as $address)
+                        @if(!count($addresses))
+
+                            <td class="text-center" colspan="5">
+                                <a class="btn btn-primary" href="{{ route('user_addresses.create')}}">
+                                    还没有收货地址请添加收货地址哦！
+                                </a>
+                            </td>
+                        @else
+                            @foreach($addresses as $address)
                             <tr>
                                 <td>{{ $address->contact_name }}</td>
                                 <td>{{ $address->full_address }}</td>
@@ -37,6 +46,7 @@
                                 </td>
                             </tr>
                         @endforeach
+                         @endif
                         </tbody>
                     </table>
                 </div>
