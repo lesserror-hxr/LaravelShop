@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@fortawesome/fontawesome-free@^5.8.1":
+  version "5.8.1"
+  resolved "http://registry.npm.taobao.org/@fortawesome/fontawesome-free/download/@fortawesome/fontawesome-free-5.8.1.tgz#cbafbfe8894c4e3e3c3a9da6774e249ac1f2da8b"
+
 "@types/q@^1.5.1":
   version "1.5.1"
   resolved "http://registry.npm.taobao.org/@types/q/download/@types/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"

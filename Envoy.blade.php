@@ -5,4 +5,5 @@ cd /var/www/LaravelShop
 git pull origin master
 composer install
 php artisan migrate --force
+php artisan laroute:generate
 @endtask

@@ -3,6 +3,12 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+// Fontawesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
 // 通用样式
 body {
   font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial,sans-serif;
