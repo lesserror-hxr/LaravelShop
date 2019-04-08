@@ -11,7 +11,7 @@ class UserAddressRequest extends Request
             'city'          => 'required',
             'district'      => 'required',
             'address'       => 'required',
-            'zip'           => 'required',
+            'zip'           => 'required|numeric',
             'contact_name'  => 'required',
             'contact_phone' => 'required',
         ];

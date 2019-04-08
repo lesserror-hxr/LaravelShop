@@ -66,7 +66,7 @@
                                 </div>
 
                                 <div class="col-sm-2 col-md-2">
-                                    <a href="{{route('user_addresses.create')}}" class="btn btn-danger">添加收货地址</a>
+                                    <a href="{{route('user_addresses.create',['cart'=>1])}}" class="btn btn-warning">添加收货地址</a>
                                 </div>
 
                             </div>
